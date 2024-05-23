@@ -1,0 +1,9 @@
+const Login="login";
+const Register="register";
+const Home="home";
+const Categories="categories";
+const Favorite="favorites";
+const Profile="profile";
+const UpdateProfile="update-profile";
+const Search="products/search";
+const Carts="carts";

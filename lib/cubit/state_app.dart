@@ -1,0 +1,32 @@
+abstract class StateApp {}
+
+class AppInitialState extends StateApp {}
+class changeIndexState extends StateApp {}
+class ChangeCurrentIndexState extends StateApp {}
+class ChangeRestTimeState extends StateApp {}
+class ChangeLoginSuccessState extends StateApp {}
+class ChangeCountState extends StateApp {}
+class OnLoadingGetUserState extends StateApp {}
+class GetUserSuccessState extends StateApp {}
+class GetUserErrorState extends StateApp {}
+class OnLoadingGetAllUsersState extends StateApp {}
+class GetAllUsersSuccessState extends StateApp {}
+class GetAllUsersErrorState extends StateApp {}
+class SendMessageSuccessState extends StateApp {}
+class SendMessageErrorState extends StateApp {}
+class GetMessageSuccessState extends StateApp {}
+class ChangeSortState extends StateApp {}
+class ChangeChooseLanguageState extends StateApp {}
+class OnLoadingGetPostState extends StateApp {}
+class GetLikePostSuccessState extends StateApp {}
+class GetLikePostErrorState extends StateApp {}
+class GetPostSuccessState extends StateApp {}
+class GetPostErrorState extends StateApp {}
+class PostImagePickedSuccessState extends StateApp {}
+class PostImagePickedErrorState extends StateApp {}
+class RemovePostImageState extends StateApp {}
+class OnLoadingCreatePostState extends StateApp {}
+class CreatePostSuccessState extends StateApp {}
+class CreatePostErrorState extends StateApp {}
+class UploadPostImageErrorState extends StateApp {}
+class UpdateVipSuccessState extends StateApp {}
