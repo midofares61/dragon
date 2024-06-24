@@ -43,7 +43,9 @@ class SocialRegisterCubit extends Cubit<SocialRegisterStates> {
       phone: phone,
       email: email,
       image: "https://firebasestorage.googleapis.com/v0/b/dragon-1b61f.appspot.com/o/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg?alt=media&token=58eca7ff-7365-4761-913c-ac09716d35b7",
-      isEmailVerified:false
+      isEmailVerified:false,
+      isAdmin: false,
+      vip: false
     );
     FirebaseFirestore.instance
         .collection("users")

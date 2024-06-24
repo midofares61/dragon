@@ -49,7 +49,7 @@ class CardioScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 5,),
                 Container(
-                  height: 170,
+                  height: 180,
                   child: ListView.separated(
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,

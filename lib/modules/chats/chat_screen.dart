@@ -23,6 +23,7 @@ class ChatScreen extends StatelessWidget {
           var cubit = CubitApp.get(context);
           return Scaffold(
             appBar: AppBar(
+              scrolledUnderElevation: 0,
               title: Text(S.of(context).trainerTitle,
                   style: TextStyle(
                       color: Colors.black,
@@ -46,51 +47,51 @@ class ChatScreen extends StatelessWidget {
                 SizedBox(width: 10,),
               ],
             ),
-            body: ConditionalBuilder(
-                condition: cubit.usermodel!.vip!,
-                builder: (context) => Column(
-                      children: [
-                        ConditionalBuilder(
-                            condition: cubit.users.isNotEmpty,
-                            builder: (context) =>cubit.usermodel!.isAdmin!?
-                            InkWell(
-                              onTap: () {
-                                navigateTo(
-                                    context: context,
-                                    widget: UsersScreen());
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "عرض جميع المستخدمين",
-                                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+            body: SingleChildScrollView(
+              child: ConditionalBuilder(
+                  condition: cubit.usermodel!.vip!,
+                  builder: (context) => Column(
+                        children: [
+                          ConditionalBuilder(
+                              condition: cubit.users.isNotEmpty,
+                              builder: (context) =>cubit.usermodel!.isAdmin!?
+                              InkWell(
+                                onTap: () {
+                                  navigateTo(
+                                      context: context,
+                                      widget: UsersScreen());
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "عرض جميع المستخدمين",
+                                        style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            )
-                                :ListView.separated(
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) =>cubit
-                                          .users[index].isAdmin!
-                                      ? chatBuilder(cubit.users[index], context)
-                                      : SizedBox(),
-                                  separatorBuilder: (context, index) =>
-                                      myDivider(),
-                                  itemCount: cubit.users.length,
-                                ),
-                            fallback: (context) =>
-                                Center(child: CircularProgressIndicator())),
-                        Container(
-                          width: double.infinity,
-                          height: 10,
-                          color: Colors.grey[300],
-                        ),
-                        ConditionalBuilder(condition: cubit.posts.isNotEmpty, builder: (context)=>Expanded(
-                          child: ConditionalBuilder(
+                              )
+                                  :ListView.separated(
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) =>cubit
+                                            .users[index].isAdmin!
+                                        ? chatBuilder(cubit.users[index], context)
+                                        : SizedBox(),
+                                    separatorBuilder: (context, index) =>
+                                        myDivider(),
+                                    itemCount: cubit.users.length,
+                                  ),
+                              fallback: (context) =>
+                                  Center(child: CircularProgressIndicator())),
+                          Container(
+                            width: double.infinity,
+                            height: 10,
+                            color: Colors.grey[300],
+                          ),
+                          ConditionalBuilder(condition: cubit.posts.isNotEmpty, builder: (context)=>ConditionalBuilder(
                               condition: cubit.getpost,
                               builder: (context) => ConditionalBuilder(
                                   condition: cubit.posts.isNotEmpty,
@@ -122,35 +123,35 @@ class ChatScreen extends StatelessWidget {
                                     child: Text("No Message Here",style: TextStyle(color: Colors.black),),
                                   )),
                               fallback: (context) =>
-                                  Center(child: CircularProgressIndicator())),
-                        ), fallback: (context) =>
-                            Center(child: CircularProgressIndicator()))
-                      ],
-                    ),
-                fallback: (context) => Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "يجب عليك الاشتراك في بريميوم حتي تتمكن من الاستفادة بهذه المميزات",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          defaultButton(
-                              text: S.of(context).premium.toUpperCase(),
-                              color: Colors.white,
-                              background: Color.fromRGBO(33, 58, 255, 1),
-                              navigate: () {},
-                              width: double.infinity),
+                                  Center(child: CircularProgressIndicator())), fallback: (context) =>
+                              Center(child: CircularProgressIndicator()))
                         ],
                       ),
-                    ))),
+                  fallback: (context) => Center(
+                          child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "يجب عليك الاشتراك في بريميوم حتي تتمكن من الاستفادة بهذه المميزات",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            defaultButton(
+                                text: S.of(context).premium.toUpperCase(),
+                                color: Colors.white,
+                                background: Color.fromRGBO(33, 58, 255, 1),
+                                navigate: () {},
+                                width: double.infinity),
+                          ],
+                        ),
+                      ))),
+            ),
           );
         });
   }

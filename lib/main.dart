@@ -95,8 +95,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (BuildContext context) => CubitApp()
-          ..getUser()
-          ..getUsers()
         ..getPosts(),
         child: BlocConsumer<CubitApp, StateApp>(
             listener: (context, state) {},
@@ -113,6 +111,10 @@ class MyApp extends StatelessWidget {
                 title: "House Of Dragon",
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
+                  scaffoldBackgroundColor: Colors.white,
+                  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                    backgroundColor: Colors.white
+                  ),
                   appBarTheme: const AppBarTheme(
                     backgroundColor: Colors.white,
                     titleTextStyle: TextStyle(color: Colors.black),
@@ -154,6 +156,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Image(
           image: AssetImage("assets/images/Logo.png"),

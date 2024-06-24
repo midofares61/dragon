@@ -81,7 +81,9 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                         image: AssetImage(widget.image),
                         fit: BoxFit.cover,
                       ),
-                      title: Text(widget.name.toUpperCase(),style: TextStyle(fontSize: 16),),
+                      title: AnimatedContainer(
+                        duration: Duration(milliseconds: 100),
+                          child: Text(widget.name.toUpperCase(),style: TextStyle(fontSize: 16,color: index < 107 ? Colors.black : Colors.transparent,),)),
                       titlePadding: EdgeInsets.only(left: 30,bottom: 20),
                     ),
                   ),
@@ -277,7 +279,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                     color: Colors.white,
                     background: Color.fromRGBO(33, 37, 217, 1.0),
                     navigate: () {
-                      if(CacheHelper.getData(key: "sound")){
+                      if(cubit.sound){
                         player.play(AssetSource("images/whistle.wav"));
                       }
                       cubit.list=widget.list;

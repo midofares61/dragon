@@ -49,12 +49,11 @@ class ChatDetailsScreen extends StatelessWidget {
                           child: ListView.separated(
                             reverse: true,
                               itemBuilder: (context, index){
-                                var message=CubitApp.get(context).messages[index];
-                                if(CubitApp.get(context).usermodel!.uId==message.senderId)
-                                  return buildMyMessage(message);
-
-                                return buildMessage(message);
-
+                                // if(CubitApp.get(context).usermodel!.uId==CubitApp.get(context).messages[index].senderId){
+                                //   return buildMyMessage(CubitApp.get(context).messages[index]);
+                                // }else{
+                                return buildMessage( message: CubitApp.get(context).messages[index], cubit: CubitApp.get(context));
+                                // }
                               },
                               separatorBuilder: (context, index) => SizedBox(height: 15,),
                               itemCount: CubitApp.get(context).messages.length),
@@ -114,16 +113,20 @@ class ChatDetailsScreen extends StatelessWidget {
     });
   }
 
-  Widget buildMessage(MessageModel message) => Align(
-        alignment: AlignmentDirectional.centerStart,
+  Widget buildMessage({
+    required MessageModel message,
+    required CubitApp cubit
+}) => Align(
+        alignment: cubit.usermodel!.uId==message.senderId? AlignmentDirectional.centerEnd:AlignmentDirectional.centerStart,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color:cubit.usermodel!.uId==message.senderId?Colors.blue.withOpacity(.2) :Colors.grey[300],
               borderRadius: BorderRadiusDirectional.only(
                 topEnd: Radius.circular(10),
                 topStart: Radius.circular(10),
-                bottomEnd: Radius.circular(10),
+                bottomEnd: cubit.usermodel!.uId==message.senderId?Radius.circular(0):Radius.circular(10),
+                bottomStart: cubit.usermodel!.uId==message.senderId?Radius.circular(10):Radius.circular(0),
               )),
           child: Text("${message.text}"),
         ),

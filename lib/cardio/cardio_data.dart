@@ -1,6 +1,5 @@
 import '../models/card.dart';
 import '../models/cardio_model.dart';
-import '../models/excersises_model.dart';
 
 List<CardModel> cardioData = [
   CardModel(

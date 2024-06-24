@@ -266,12 +266,10 @@ class _SettingScreenState extends State<SettingScreen> {
                                   // CacheHelper.removeData(key: "email");
                                   // CacheHelper.removeData(key: "userId");
                                   cubit.changeCurrentIndex(0);
-                                  CacheHelper.removeData(key: "uId")
-                                      .whenComplete(() {
-                                    navigateToFinish(
-                                        context: context,
-                                        widget: LoginScreen());
-                                  });
+                                  CacheHelper.removeData(key: "uId");
+                                  navigateToFinish(
+                                      context: context,
+                                      widget: LoginScreen());
                                 },
                                     icon: Icons.exit_to_app,
                                     onPressedTitle: "Logout",

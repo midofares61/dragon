@@ -158,7 +158,7 @@ class _StartScreenState extends State<StartScreen> {
                                       color: Colors.white,
                                       background: Colors.blue,
                                       navigate: () {
-                  if(CacheHelper.getData(key: "sound")) {
+                  if(cubit.sound) {
                     player
                         .play(AssetSource("images/ding.mp3"));
                   }
@@ -176,7 +176,7 @@ class _StartScreenState extends State<StartScreen> {
                                       color: Colors.white,
                                       background: Colors.blue,
                                       navigate: () {
-                                        if (CacheHelper.getData(key: "sound")) {
+                                        if (cubit.sound) {
                                           player.play(
                                               AssetSource("images/cheer.mp3"));
                                         }

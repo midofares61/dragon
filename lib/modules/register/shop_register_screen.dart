@@ -54,7 +54,7 @@ class SocialRegisterScreen extends StatelessWidget {
                           ),
                           Text(
                               "سجل الان لتستمتع بافصل التمارين",
-                              style: Theme.of(context).textTheme.headline6?.copyWith(
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 18

@@ -76,7 +76,7 @@ class CreatePostScreen extends StatelessWidget {
                       cubit.usermodel!.name!,
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1
+                          .titleMedium
                           ?.copyWith(height: 1.4),
                     ),
                   ),

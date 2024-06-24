@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     builder: (context, state) {
     var cubit=CubitApp.get(context);
     return Scaffold(
+
       appBar: AppBar(
         scrolledUnderElevation: 0,
         elevation: 0,
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                height: 80,
+                height: 95,
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 5),
                 child: Row(
@@ -146,6 +147,7 @@ class HomeScreen extends StatelessWidget {
                   return defaultCard(isArabic()?profUsers[index]:profUsersEnglish[index],context);
                 },
               ),
+              Text("")
             ],
           ),
         ),

@@ -1,15 +1,11 @@
-import 'package:dragon/cubit/cubit_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dragon/modules/excersise_screen.dart';
-import 'package:page_transition/page_transition.dart';
 import '../../generated/l10n.dart';
 import '../../main.dart';
 import '../../models/card.dart';
 import '../../models/user_model.dart';
 import '../../modules/chat_details/chat_details_screen.dart';
-import '../../modules/dialog_widget.dart';
-import '../local/chach_helper.dart';
 import 'constance.dart';
 
 Widget defaultCard(CardModel item,context)=>InkWell(
@@ -125,7 +121,7 @@ Widget chatBuilder(UserModel user, context) => InkWell(
                 "${user.name}",
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle1
+                    .titleMedium
                     ?.copyWith(height: 1.4),
               ),
             ],
@@ -135,6 +131,7 @@ Widget chatBuilder(UserModel user, context) => InkWell(
     ),
   ),
 );
+
 
 void navigateTo({required context, required widget}) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
@@ -294,7 +291,7 @@ Widget buildCard(
                             name,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1
+                                .titleMedium
                                 ?.copyWith(height: 1.4),
                           ),
                           SizedBox(
@@ -312,7 +309,7 @@ Widget buildCard(
                             RegExp(r'\d{2}:\d{2}:\d{2}.\d{6}'), ''),
                         style: Theme.of(context)
                             .textTheme
-                            .caption
+                            .titleSmall
                             ?.copyWith(height: 1.4),
                       ),
                     ],

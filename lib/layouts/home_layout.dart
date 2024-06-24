@@ -6,13 +6,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cubit_app.dart';
 import '../cubit/state_app.dart';
 
-class HomeLayout extends StatelessWidget {
+class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
+  @override
+  State<HomeLayout> createState() => _HomeLayoutState();
+}
 
+class _HomeLayoutState extends State<HomeLayout> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    CubitApp.get(context).usermodel==null?CubitApp.get(context).getUser():null;
+    CubitApp.get(context).users.isEmpty?CubitApp.get(context).getUsers():null;
+  }
   @override
   Widget build(BuildContext context) {
-    CubitApp.get(context).users==null?CubitApp.get(context).getUsers():null;
-    CubitApp.get(context).usermodel==null?CubitApp.get(context).getUser():null;
     return BlocConsumer<CubitApp, StateApp>(
       listener: (context,state){},
       builder: (context,state){

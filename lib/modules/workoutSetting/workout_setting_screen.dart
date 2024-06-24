@@ -18,9 +18,7 @@ class WorkoutSetting extends StatefulWidget {
 }
 
 class _WorkoutSettingState extends State<WorkoutSetting> {
-  bool sound = CacheHelper.getData(key: "sound") == null
-      ? true
-      : CacheHelper.getData(key: "sound");
+
   int rest=0;
   @override
   Widget build(BuildContext context) {
@@ -187,11 +185,11 @@ class _WorkoutSettingState extends State<WorkoutSetting> {
                           trackOutlineWidth:
                               MaterialStateProperty.resolveWith((states) => 0),
                           activeColor: Colors.blue,
-                          value: sound,
+                          value: cubit.sound,
                           onChanged: (value) {
                             CacheHelper.SaveData(key: "sound", value: value);
                             setState(() {
-                              sound = CacheHelper.getData(key: "sound");
+                              cubit.sound = CacheHelper.getData(key: "sound");
                             });
                           },
                         )

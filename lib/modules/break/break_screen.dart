@@ -128,7 +128,7 @@ class BreakScreen extends StatelessWidget {
                             name == "Leg Exercises (Without Jumping)") {
                           cubit.controller.restart();
                         }
-                        if (CacheHelper.getData(key: "sound")) {
+                        if (cubit.sound) {
                           player.play(AssetSource("images/whistle.wav"));
                         }
                         cubit.changeIndex(index);
@@ -169,7 +169,7 @@ class BreakScreen extends StatelessWidget {
                           cubit.controller.restart();
                         }
                         controller.isPaused;
-                        if (CacheHelper.getData(key: "sound")) {
+                        if (cubit.sound) {
                           player.play(AssetSource("images/whistle.wav"));
                         }
                         cubit.changeIndex(index);

@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Fluttertoast.showToast(msg: state.error);
             }
             if(state is LoginSuccessful){
+              print(state.uId);
               CacheHelper.SaveData(key: "uId", value: state.uId).then((value){
                 Fluttertoast.showToast(msg: "تم تسجيل الدخول بنجاح");
                 navigateToFinish(context: context, widget: HomeLayout());

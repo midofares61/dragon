@@ -25,7 +25,9 @@ class CubitApp extends Cubit<StateApp> {
   CubitApp() : super(AppInitialState());
 
   static CubitApp get(context) => BlocProvider.of(context);
-
+  bool sound = CacheHelper.getData(key: "sound") == null
+      ? true
+      : CacheHelper.getData(key: "sound");
   List? list;
   var index=0;
   void changeIndex(int ind){
@@ -141,18 +143,23 @@ class CubitApp extends Cubit<StateApp> {
     required String dateTime,
     required String receiverId,
   }) {
-    MessageModel model = MessageModel(
-        dateTime: dateTime,
-        receiverId: receiverId,
-        text: text,
-        senderId: usermodel!.uId);
+    // MessageModel model = MessageModel(
+    //     dateTime: dateTime,
+    //     receiverId: receiverId,
+    //     text: text,
+    //     senderId: usermodel!.uId);
     FirebaseFirestore.instance
         .collection("users")
         .doc(usermodel!.uId)
         .collection("chats")
         .doc(receiverId)
         .collection("messages")
-        .add(model.toMap())
+        .add({
+      "receiverId":receiverId,
+      "text":text,
+      "senderId":usermodel!.uId,
+      "dateTime":FieldValue.serverTimestamp(),
+    })
         .then((value) {
       emit(SendMessageSuccessState());
     }).catchError((error) {
@@ -166,7 +173,12 @@ class CubitApp extends Cubit<StateApp> {
         .collection("chats")
         .doc(usermodel!.uId)
         .collection("messages")
-        .add(model.toMap())
+        .add({
+      "receiverId":receiverId,
+      "text":text,
+      "senderId":usermodel!.uId,
+      "dateTime":FieldValue.serverTimestamp(),
+    })
         .then((value) {
       emit(SendMessageSuccessState());
     }).catchError((error) {
